@@ -1,0 +1,14 @@
+{
+  "dashboard_type": "safe_public_reviewer_doer_status",
+  "last_safe_update": "2026-09-06",
+  "doer": {
+    "status": "in_progress",
+    "current_work": "Build interactive public-safe dashboard control center."
+  },
+  "reviewer": {
+    "status": "needed_next",
+    "current_work": "Verify that the public dashboard and status JSON allow a fresh AI to recover the high-level project state."
+  },
+  "rotation_instruction": "After the reviewer confirms the public dashboard works, rotate before the next implementation task.",
+  "privacy_note": "This status is public-safe and does not expose internal work logs or private repo paths."
+}
