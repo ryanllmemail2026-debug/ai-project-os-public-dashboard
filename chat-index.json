@@ -1,0 +1,14 @@
+{
+  "dashboard_type": "safe_public_chat_index",
+  "last_safe_update": "2026-09-06",
+  "archives": [
+    {
+      "id": "2026-09-06-continuity-and-youtube-fresh-pickup",
+      "title": "Continuity and YouTube fresh pickup proof",
+      "status": "archived_summary_available_private_repo",
+      "public_summary": "Built the continuity pattern, proved fresh pickup, then added chat rotation and public-safe dashboard direction.",
+      "next_step_after_archive": "Verify and automate public dashboard updates."
+    }
+  ],
+  "privacy_note": "This index is public-safe. Full archive files and evidence remain in the private project repo."
+}
