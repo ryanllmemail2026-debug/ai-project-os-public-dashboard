@@ -1,0 +1,21 @@
+{
+  "dashboard_type": "safe_public_rotation_alerts",
+  "last_safe_update": "2026-09-06",
+  "alerts": [
+    {
+      "level": "warning",
+      "code": "ROTATE_NOW",
+      "audience": "Ryan, doer chat, reviewer chat",
+      "message": "Do not continue indefinitely in the current chat. The current work reached a checkpoint and should be saved before the next implementation step.",
+      "required_action": "Save the session, archive useful logic, verify what was saved, then start a fresh chat for the next task."
+    }
+  ],
+  "rotation_statuses": [
+    "ACTIVE",
+    "SAVE_SOON",
+    "ROTATE_NOW",
+    "ARCHIVED",
+    "STALE_OR_CONFUSED"
+  ],
+  "privacy_note": "Alerts are intentionally high-level and do not include private evidence or internal logs."
+}
