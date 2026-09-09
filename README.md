@@ -29,23 +29,24 @@ That milestone answered a concrete product question:
 
 ---
 
-## Supporting build — AI Project OS
+## Supporting build — Endless Thread
 
-**AI Project OS** is the operating layer I am building to keep long-running AI projects from losing their decisions, evidence, history, handoffs, and exact next actions when chats or AI providers change.
+**Endless Thread** is the project-memory and recovery system I am building to keep long-running AI work from losing decisions, evidence, history, open loops, and exact next actions when chats, models, or tools change.
 
-A real continuity test was run against YouTube Second Brain: a fresh AI session successfully reconstructed the project's current state, evidence, stale boundaries, and next task without me re-explaining the project history.
+A real recovery test was run against YouTube Second Brain: a fresh AI session successfully reconstructed the project's current state, strongest evidence, stale boundaries, do-not-redo rules, and exact next task without me re-explaining the project history.
 
 It demonstrates:
 
 - multi-model / multi-provider workflow design
 - durable state in JSON + Markdown
-- deterministic validation
+- structured handoffs and archive indexing
+- deterministic validation and stale/conflict detection
 - evidence-based completion gates
 - human-in-the-loop decision boundaries
-- context minimization and retrieval design
+- context minimization and progressive retrieval
 - AI workflow orchestration
 
-[Read the AI Project OS case study →](projects/AI_PROJECT_OS.md)
+[Read the Endless Thread case study →](projects/ENDLESS_THREAD.md)
 
 ## How I approach AI systems
 
@@ -63,4 +64,4 @@ The implementation repositories remain private. This public portfolio exposes no
 
 ## Live portfolio
 
-https://ryanllmemail2026-debug.github.io/ai-project-os-public-dashboard/
+https://ryanllmemail2026-debug.github.io/youtube-second-brain/
