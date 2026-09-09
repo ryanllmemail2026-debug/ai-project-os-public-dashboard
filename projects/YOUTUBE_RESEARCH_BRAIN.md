@@ -1,4 +1,4 @@
-# YouTube Research Brain
+# YouTube Second Brain
 
 **Status:** Working system with a completed historical-search production milestone; Tier 1 classification is the next major build area.
 
