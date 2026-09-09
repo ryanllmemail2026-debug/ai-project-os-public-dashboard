@@ -52,24 +52,6 @@ What it demonstrates:
 
 [Read the case study →](projects/AI_PROJECT_OS.md)
 
----
-
-### 3. Sports Intelligence — experimental / Stage 0
-
-An evidence-first system for tracking sports predictions, normalizing markets, preserving what was said and when, grading outcomes, and eventually measuring source accuracy and closing-line value.
-
-This project is intentionally labeled **early stage**: architecture and scaffolding exist, but live ingestion has not started yet.
-
-What it demonstrates:
-
-- problem and evidence-model design before scaling
-- LLM extraction separated from deterministic validation
-- normalization + deduplication thinking
-- result grading and performance metrics architecture
-- explicit cost boundaries from the beginning
-
-[Read the case study →](projects/SPORTS_INTELLIGENCE.md)
-
 ## How I build
 
 A few principles repeat across the projects:
