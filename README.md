@@ -1,8 +1,8 @@
-# YouTube Research Brain — Primary Build
+# YouTube Second Brain — Primary Build
 
 **Ryan McConihe · Applied AI systems · investigations + operations background**
 
-My primary public project is **YouTube Research Brain**: a budget-first research and knowledge system designed to capture source evidence once, preserve it, make a large historical archive searchable, and reserve expensive AI reasoning for the material that actually warrants it.
+My primary public project is **YouTube Second Brain**: a budget-first research and knowledge system designed to capture source evidence once, preserve it, make a large historical archive searchable, and reserve expensive AI reasoning for the material that actually warrants it.
 
 ## Verified milestone
 
@@ -25,7 +25,7 @@ That milestone answered a concrete product question:
 - automated Gitleaks, Semgrep, and OSV security checks
 - evidence-first retrieval and human verification
 
-[Read the full YouTube Research Brain case study →](projects/YOUTUBE_RESEARCH_BRAIN.md)
+[Read the full YouTube Second Brain case study →](projects/YOUTUBE_RESEARCH_BRAIN.md)
 
 ---
 
@@ -33,7 +33,7 @@ That milestone answered a concrete product question:
 
 **AI Project OS** is the operating layer I am building to keep long-running AI projects from losing their decisions, evidence, history, handoffs, and exact next actions when chats or AI providers change.
 
-A real continuity test was run against YouTube Research Brain: a fresh AI session successfully reconstructed the project's current state, evidence, stale boundaries, and next task without me re-explaining the project history.
+A real continuity test was run against YouTube Second Brain: a fresh AI session successfully reconstructed the project's current state, evidence, stale boundaries, and next task without me re-explaining the project history.
 
 It demonstrates:
 
