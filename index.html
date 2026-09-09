@@ -3,123 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI Project OS — Control Center</title>
+<meta name="description" content="Ryan McConihe — applied AI systems builder creating evidence-first research, automation, and multi-agent workflow systems.">
+<title>Ryan McConihe — Applied AI Systems</title>
 <style>
 :root{
-  --paper:#f2f4f7;--card:#ffffff;--ink:#151927;--muted:#5e697c;--rule:#d6dce6;
-  --accent:#eb6c36;--accent2:#315f91;--good:#166534;--good-bg:#ecfdf3;
-  --warn:#9a3412;--warn-bg:#fff7ed;--red:#991b1b;--red-bg:#fef2f2;
-  --dark:#1f2633;--soft:#f8fafc;
+  --bg:#080b11;--panel:#101620;--panel2:#151d2a;--ink:#f4f7fb;--muted:#9aa8ba;
+  --rule:#243044;--cyan:#63d5ff;--violet:#a98bff;--green:#68e0a0;--amber:#ffca6b;
+  --max:1160px;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
-main{max-width:1180px;margin:0 auto;padding:34px 24px 64px}
-.eyebrow{font:700 11px/1.2 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-h1{font-family:Georgia,'Times New Roman',serif;font-size:46px;line-height:1.02;font-weight:400;margin:8px 0}
-.subtitle{font-size:16px;color:var(--muted);max-width:840px;line-height:1.4}
-.banner{margin-top:22px;border:2px solid #fb923c;background:linear-gradient(90deg,#fff7ed,#ffffff);border-radius:14px;padding:20px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
-.banner .status{font-size:38px;font-weight:900;letter-spacing:.02em;margin:4px 0 6px}.banner p{margin:0;color:#4b5563;line-height:1.45}.badge{display:inline-block;border:1px solid #fed7aa;background:#ffedd5;color:#9a3412;border-radius:999px;padding:7px 10px;font:700 11px ui-monospace,SFMono-Regular,Consolas,monospace;text-transform:uppercase}.button{display:inline-block;background:var(--dark);color:white;text-decoration:none;border-radius:9px;padding:12px 14px;font-weight:700;font-size:14px}.button.secondary{background:white;color:var(--dark);border:1px solid var(--rule)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:18px}.card h2{font-size:12px;letter-spacing:.11em;text-transform:uppercase;margin:0 0 12px;color:var(--muted)}.big{font-family:Georgia,'Times New Roman',serif;font-size:23px;line-height:1.25;margin:0}.note{font-size:14px;color:var(--muted);line-height:1.45;margin:0}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;color:var(--muted);line-height:1.55;white-space:pre-wrap}.good{background:var(--good-bg);border-color:#bbf7d0}.warn{background:var(--warn-bg);border-color:#fed7aa}.danger{background:var(--red-bg);border-color:#fecaca}
-.section-title{font-family:Georgia,'Times New Roman',serif;font-size:29px;font-weight:400;margin:34px 0 12px}.wide{grid-column:span 2}.links{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.linkcard{display:block;text-decoration:none;color:var(--ink);background:var(--soft);border:1px solid var(--rule);border-radius:10px;padding:14px}.linkcard b{display:block;margin-bottom:6px}.linkcard span{display:block;color:var(--muted);font-size:13px;line-height:1.35}
-.copybox{background:#111827;color:#e5e7eb;border-radius:12px;padding:16px;position:relative;overflow:auto}.copybox pre{margin:0;white-space:pre-wrap;word-break:break-word;font:13px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace}.copybtn{position:absolute;right:10px;top:10px;border:1px solid #374151;background:#1f2937;color:white;border-radius:7px;padding:7px 9px;cursor:pointer;font-size:12px}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px}.step b{display:block;margin-bottom:7px}.step span{font-size:13px;color:var(--muted);line-height:1.35}footer{margin-top:28px;border-top:1px solid var(--rule);padding-top:14px;color:var(--muted);font-size:12px;line-height:1.4}
-@media(max-width:900px){.grid,.links,.flow,.banner{grid-template-columns:1fr}.wide{grid-column:span 1}h1{font-size:36px}.banner .status{font-size:31px}}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 85% 0%,#18213b 0,transparent 32%),radial-gradient(circle at 5% 15%,#112c36 0,transparent 28%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit}.wrap{max-width:var(--max);margin:auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:10;background:rgba(8,11,17,.78);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.navin{max-width:var(--max);margin:auto;padding:15px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-weight:800;letter-spacing:-.02em}.navlinks{display:flex;gap:18px;flex-wrap:wrap}.navlinks a{font-size:13px;color:var(--muted);text-decoration:none}.navlinks a:hover{color:var(--ink)}
+.hero{padding:92px 0 62px}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--rule);background:rgba(255,255,255,.03);border-radius:999px;padding:7px 10px;font:700 11px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 18px var(--green)}
+h1{font-size:clamp(48px,8vw,88px);line-height:.96;letter-spacing:-.055em;margin:22px 0 24px;max-width:940px}.grad{background:linear-gradient(90deg,var(--cyan),#c7b8ff 60%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:clamp(18px,2.5vw,24px);max-width:830px;color:#c1cbd8;margin:0}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}.btn{display:inline-block;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:750;font-size:14px;border:1px solid var(--rule);background:var(--panel)}.btn.primary{background:linear-gradient(135deg,#146b8b,#694cc4);border-color:transparent}.btn:hover{transform:translateY(-1px)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:54px}.stat{border:1px solid var(--rule);background:rgba(16,22,32,.7);border-radius:14px;padding:18px}.stat b{font-size:26px;display:block;letter-spacing:-.03em}.stat span{font-size:12px;color:var(--muted)}
+section{padding:56px 0}.section-kicker{font:700 11px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}h2{font-size:clamp(32px,5vw,50px);line-height:1.02;letter-spacing:-.04em;margin:10px 0 16px}.intro{max-width:800px;color:var(--muted);font-size:17px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}.card{border:1px solid var(--rule);border-radius:17px;padding:22px;background:linear-gradient(180deg,rgba(21,29,42,.94),rgba(12,17,25,.94));display:flex;flex-direction:column;min-height:330px}.card:hover{border-color:#40516d}.status{font:800 10px ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.1em;text-transform:uppercase}.status.shipped{color:var(--green)}.status.active{color:var(--cyan)}.status.experimental{color:var(--amber)}.card h3{font-size:25px;line-height:1.05;letter-spacing:-.03em;margin:12px 0}.card p{color:var(--muted);font-size:14px}.chips{display:flex;gap:7px;flex-wrap:wrap;margin:6px 0 20px}.chip{font-size:11px;border:1px solid var(--rule);border-radius:999px;padding:5px 8px;color:#b8c4d2}.card .more{margin-top:auto;text-decoration:none;font-weight:750;font-size:13px;color:var(--cyan)}
+.proof{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:30px}.bigpanel,.panel{border:1px solid var(--rule);border-radius:18px;background:rgba(16,22,32,.78);padding:26px}.metric{font-size:58px;font-weight:900;letter-spacing:-.06em;line-height:.9;color:var(--green)}.metric-label{font-size:15px;color:var(--muted);margin-top:12px}.checklist{display:grid;gap:10px;margin-top:18px}.check{display:flex;gap:10px;color:#c8d2de;font-size:14px}.check:before{content:"✓";color:var(--green);font-weight:900}
+.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:26px}.principle{border:1px solid var(--rule);border-radius:14px;padding:18px;background:rgba(255,255,255,.025)}.principle b{display:block;margin-bottom:5px}.principle span{font-size:13px;color:var(--muted)}
+.thesis{border:1px solid #394761;border-radius:22px;padding:34px;background:linear-gradient(135deg,rgba(25,53,64,.78),rgba(38,27,69,.75));margin-top:28px}.thesis blockquote{font-size:clamp(24px,4vw,38px);line-height:1.15;letter-spacing:-.035em;margin:0;max-width:930px}.thesis p{color:#b8c5d4;max-width:820px;margin:20px 0 0}
+.background{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;margin-top:28px}.timeline{display:grid;gap:12px}.event{border-left:2px solid var(--rule);padding:5px 0 5px 17px}.event b{display:block}.event span{font-size:13px;color:var(--muted)}
+footer{border-top:1px solid var(--rule);margin-top:42px;padding:30px 0 46px;color:var(--muted);font-size:13px}.footerin{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footerin a{color:#c5d0dc;text-decoration:none}
+@media(max-width:850px){.stats,.grid{grid-template-columns:repeat(2,1fr)}.proof,.background{grid-template-columns:1fr}.navlinks{display:none}}
+@media(max-width:560px){.hero{padding-top:65px}.stats,.grid,.principles{grid-template-columns:1fr}.stat b{font-size:23px}}
 </style>
 </head>
 <body>
+<nav><div class="navin"><div class="brand">Ryan McConihe</div><div class="navlinks"><a href="#builds">Builds</a><a href="#approach">Approach</a><a href="#thesis">Solopreneur thesis</a><a href="https://github.com/ryanllmemail2026-debug">GitHub</a></div></div></nav>
+
 <main>
-<div class="eyebrow">Safe Public Control Center</div>
-<h1>AI Project OS</h1>
-<p class="subtitle">Public-safe project status for humans and LLMs. This page hides private repository details, full handoffs, internal logs, credentials, and detailed evidence.</p>
-
-<section class="banner">
-  <div>
-    <span class="badge">Chat Health Alert</span>
-    <div class="status">ROTATE_NOW</div>
-    <p>The current work reached a checkpoint. Save the session, archive the useful logic, and start the next focused chat instead of continuing indefinitely.</p>
+<header class="hero wrap">
+  <div class="eyebrow"><span class="dot"></span> Applied AI systems portfolio</div>
+  <h1>Building AI systems for <span class="grad">messy real-world problems.</span></h1>
+  <p class="lede">I come from investigations, regulated operations, insurance, finance-adjacent work, and research — and I’m learning to turn that domain judgment into practical AI, automation, search, and multi-agent systems.</p>
+  <div class="hero-actions"><a class="btn primary" href="#builds">See what I’m building</a><a class="btn" href="BUILDING_PRINCIPLES.md">How I build</a><a class="btn" href="https://github.com/ryanllmemail2026-debug">GitHub profile</a></div>
+  <div class="stats">
+    <div class="stat"><b>29,521</b><span>catalog videos represented in a verified production search build</span></div>
+    <div class="stat"><b>3</b><span>active AI system directions: research, project OS, sports intelligence</span></div>
+    <div class="stat"><b>Evidence-first</b><span>source material, validation, and proof before model confidence</span></div>
+    <div class="stat"><b>Human-gated</b><span>consequential decisions stay under explicit owner control</span></div>
   </div>
-  <a class="button" href="#next-prompt">Copy next-chat prompt</a>
-</section>
+</header>
 
-<section class="grid">
-  <div class="card good">
-    <h2>Current Step</h2>
-    <p class="big">Build interactive public-safe dashboard control.</p>
-    <p class="mono">Last safe update: 2026-09-06</p>
+<section id="builds"><div class="wrap">
+  <div class="section-kicker">Selected builds</div>
+  <h2>Not demos. Systems with different maturity levels.</h2>
+  <p class="intro">I label projects honestly: shipped milestones are different from active builds, and active builds are different from experiments. The point is to show how I turn a problem into architecture, controls, evidence, and an executable next step.</p>
+  <div class="grid">
+    <article class="card"><div class="status shipped">Working system · major milestone shipped</div><h3>YouTube Research Brain</h3><p>Budget-first research infrastructure that preserves transcript and metadata evidence, makes a large historical catalog searchable, and saves expensive AI analysis for content worth deeper reasoning.</p><div class="chips"><span class="chip">Python</span><span class="chip">GitHub Actions</span><span class="chip">SQLite</span><span class="chip">Turso / libSQL</span><span class="chip">Retrieval</span><span class="chip">Security scanning</span></div><a class="more" href="projects/YOUTUBE_RESEARCH_BRAIN.md">Read case study →</a></article>
+    <article class="card"><div class="status active">Active build</div><h3>AI Project OS</h3><p>A provider-neutral continuity and coordination layer designed so long-running AI projects retain decisions, evidence, history, current state, and next actions even when chats and models change.</p><div class="chips"><span class="chip">Python</span><span class="chip">JSON + Markdown</span><span class="chip">Multi-agent</span><span class="chip">Validation</span><span class="chip">Human-in-loop</span></div><a class="more" href="projects/AI_PROJECT_OS.md">Read case study →</a></article>
+    <article class="card"><div class="status experimental">Experimental · Stage 0</div><h3>Sports Intelligence</h3><p>An evidence-first architecture for extracting, normalizing, validating, and grading sports predictions so source accuracy can eventually be measured rather than remembered selectively.</p><div class="chips"><span class="chip">LLM extraction</span><span class="chip">Normalization</span><span class="chip">SQLite</span><span class="chip">Validation</span><span class="chip">CLV</span></div><a class="more" href="projects/SPORTS_INTELLIGENCE.md">Read case study →</a></article>
   </div>
-  <div class="card warn">
-    <h2>Reviewer / Doer Loop</h2>
-    <p class="note"><strong>Doer:</strong> dashboard V2 build in progress.<br><strong>Reviewer:</strong> verify public page and LLM status recovery.<br><strong>Warning:</strong> rotate after verification.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="section-kicker">Proof over pitch</div><h2>One milestone I can point to.</h2>
+  <div class="proof">
+    <div class="bigpanel"><div class="metric">29,521</div><div class="metric-label">YouTube catalog videos represented in the completed historical lexical-search production gate.</div><div class="checklist"><div class="check">Local validation and quality auditing passed</div><div class="check">Real lexical probe searches executed</div><div class="check">Complete index published to Turso/libSQL</div><div class="check">Remote data independently verified</div><div class="check">Production evidence artifact generated</div></div></div>
+    <div class="panel"><div class="section-kicker">Why it matters</div><h3 style="font-size:27px;margin:10px 0">The system answered the product question.</h3><p style="color:var(--muted)">Instead of saying “I built a research brain,” the milestone answers something testable: <strong style="color:#fff">Can the historical archive actually be searched without reprocessing everything?</strong></p><p style="color:var(--muted)">That distinction — between an idea, a prototype, and a proven capability — is how I want to build.</p></div>
   </div>
-  <div class="card">
-    <h2>Saved State</h2>
-    <p class="note">Continuity, freshness, rotation status, archive index, public dashboard, and LLM-readable status files exist. Full private evidence remains in the private project repo.</p>
+</div></section>
+
+<section id="approach"><div class="wrap">
+  <div class="section-kicker">Operating principles</div><h2>AI is a component, not the entire architecture.</h2><p class="intro">The recurring pattern across my work is to use models where judgment, extraction, or synthesis helps — and use deterministic systems where consistency, validation, cost, and control matter more.</p>
+  <div class="principles">
+    <div class="principle"><b>Problem first</b><span>Start with the bottleneck and success condition, then choose the technology.</span></div>
+    <div class="principle"><b>Evidence before confidence</b><span>Trace important conclusions back to source material, tests, logs, or durable artifacts.</span></div>
+    <div class="principle"><b>Cheap before expensive</b><span>Use structure, search, rules, caching, and deterministic processing before broad LLM calls.</span></div>
+    <div class="principle"><b>Preserve the source</b><span>Keep original evidence durable so derived intelligence can improve without recreating it.</span></div>
+    <div class="principle"><b>Human gates for consequential choices</b><span>Money, credentials, permissions, privacy exposure, destructive actions, and major product choices stay explicit.</span></div>
+    <div class="principle"><b>Design for restart</b><span>Chats fill up, APIs fail, runners disappear. Systems should resume instead of starting over.</span></div>
   </div>
-</section>
+</div></section>
 
-<h2 class="section-title">Clickable project controls</h2>
-<section class="grid">
-  <div class="card wide">
-    <h2>Open status files</h2>
-    <div class="links">
-      <a class="linkcard" href="status.json"><b>LLM status JSON</b><span>Machine-readable current status, chat health, next action, and privacy note.</span></a>
-      <a class="linkcard" href="chat-index.json"><b>Chat archive index</b><span>Public-safe list of archived chat steps and where the logic was saved.</span></a>
-      <a class="linkcard" href="alerts.json"><b>Rotation alerts</b><span>Current warnings telling doer/reviewer chats when to stop or continue.</span></a>
-      <a class="linkcard" href="reviewer-doer-status.json"><b>Reviewer / doer status</b><span>Public-safe state for the current implementation/review loop.</span></a>
-    </div>
-  </div>
-  <div class="card danger">
-    <h2>Do not continue blindly</h2>
-    <p class="note">When this dashboard says ROTATE_NOW, the next AI should save the session state, archive the useful logic, and begin the next task in a fresh chat.</p>
-  </div>
-</section>
+<section id="thesis"><div class="wrap">
+  <div class="section-kicker">Solopreneur thesis</div><h2>I want to build useful AI businesses, not just AI features.</h2>
+  <div class="thesis"><blockquote>Find an expensive, repetitive, information-heavy problem. Understand the workflow better than the automation does. Then build the smallest system that materially improves it.</blockquote><p>My long-term direction is practical AI entrepreneurship: small, focused products and workflow systems with obvious value, controlled costs, traceable evidence, and a clear human decision boundary.</p></div>
+</div></section>
 
-<h2 class="section-title" id="next-prompt">Next-chat prompt</h2>
-<section class="copybox">
-  <button class="copybtn" onclick="copyPrompt()">Copy</button>
-  <pre id="prompt">You are taking over AI Project OS.
-
-Do not rely on prior chat memory.
-
-Read the public dashboard first:
-https://ryanllmemail2026-debug.github.io/ai-project-os-public-dashboard/status.json
-
-Then read the private repo continuity files if you have access:
-1. continuity/START_HERE.md
-2. continuity/LATEST_HANDOFF.md
-3. continuity/ROTATION_STATUS.md
-4. continuity/chat-archive/CHAT_INDEX.md
-
-Tell Ryan:
-- where the project is
-- whether the prior chat should rotate
-- what was saved
-- what evidence is still needed
-- the exact next task
-
-Do not modify anything until asked.</pre>
-</section>
-
-<h2 class="section-title">Operating flow</h2>
-<section class="flow">
-  <div class="step"><b>1. Work</b><span>Use one focused chat for one project step.</span></div>
-  <div class="step"><b>2. Save</b><span>Write durable results into private continuity files.</span></div>
-  <div class="step"><b>3. Publish</b><span>Expose only safe status to this public dashboard.</span></div>
-  <div class="step"><b>4. Rotate</b><span>Start the next clean chat from saved state.</span></div>
-</section>
-
-<footer>
-This is a safe public dashboard. It intentionally excludes private repo names, secrets, internal logs, full handoffs, detailed project evidence, and personal data.
-</footer>
+<section><div class="wrap">
+  <div class="section-kicker">Why this background fits</div><h2>Domain judgment first. Technical leverage second.</h2>
+  <div class="background"><div class="panel"><p style="margin-top:0;color:#cbd5e1">My path into AI is intentionally non-traditional. I spent years investigating fraud and insurance claims, reviewing evidence, applying rules to incomplete information, documenting decisions, and working in deadline-driven regulated environments.</p><p style="color:var(--muted)">That background is why I care about provenance, edge cases, review gates, contradictions, and whether a system can explain what it did — not just whether a model produced an answer.</p></div><div class="timeline"><div class="event"><b>Investigations & fraud research</b><span>Evidence gathering, discrepancy detection, defensible findings.</span></div><div class="event"><b>Insurance claims</b><span>Policy interpretation, liability analysis, high-volume case management, regulated decisions.</span></div><div class="event"><b>Mortgage / real estate workflows</b><span>Guideline-based eligibility, documentation, product fit, research, and relationship-driven processes.</span></div><div class="event"><b>Applied AI systems</b><span>Turning those habits into retrieval, automation, validation, continuity, and multi-agent workflow design.</span></div></div></div>
+</div></section>
 </main>
-<script>
-function copyPrompt(){
-  const text = document.getElementById('prompt').innerText;
-  navigator.clipboard.writeText(text).then(function(){
-    const btn = document.querySelector('.copybtn');
-    btn.innerText = 'Copied';
-    setTimeout(function(){ btn.innerText = 'Copy'; }, 1200);
-  });
-}
-</script>
+
+<footer><div class="wrap footerin"><span>Ryan McConihe · Applied AI systems builder · portfolio is intentionally public-safe</span><span><a href="README.md">Repository README</a> · <a href="BUILDING_PRINCIPLES.md">Building principles</a> · <a href="https://github.com/ryanllmemail2026-debug">GitHub</a></span></div></footer>
 </body>
 </html>
