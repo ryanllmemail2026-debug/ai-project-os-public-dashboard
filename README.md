@@ -1,67 +1,133 @@
-# YouTube Second Brain — Primary Build
+# YouTube Second Brain
 
-**Ryan McConihe · Applied AI systems · investigations + operations background**
+**AI-assisted research and evidence system for turning large-scale video content into searchable, reusable intelligence.**
 
-My primary public project is **YouTube Second Brain**: a budget-first research and knowledge system designed to capture source evidence once, preserve it, make a large historical archive searchable, and reserve expensive AI reasoning for the material that actually warrants it.
+YouTube Second Brain is the YouTube research layer of a broader second-brain system. It is designed to capture useful video evidence, preserve the original source material, organize it for retrieval, and apply AI selectively for classification, comparison, verification, and deeper analysis.
 
-## Verified milestone
+The core principle is simple:
 
-The historical-search production stage represented **29,521 catalog videos**, passed validation and quality auditing, executed real lexical search probes, published the complete index to **Turso/libSQL**, independently verified the remote data, and produced a production evidence artifact.
+> **Capture once. Preserve the source evidence. Reanalyze and improve the derived intelligence over time.**
 
-That milestone answered a concrete product question:
+## Project at a glance
 
-> **Can a large historical YouTube research archive become reliably searchable without repeatedly reprocessing everything?**
+- **29,521 historical videos represented** in the verified search catalog
+- Production lexical search published and independently verified through **Turso/libSQL**
+- Automated intake path for new YouTube content
+- Transcript and metadata evidence preserved before downstream analysis
+- Deterministic processing used before AI escalation to control cost and reduce unnecessary model use
+- Human-review boundaries preserved for ambiguity, taxonomy gaps, evidence quality, and live changes
+- Automated repository security checks in the private implementation environment
 
-**Yes.**
+## The problem
 
-### What the system demonstrates
+Useful information is often buried inside long videos, watch history, notes, bookmarks, and repeated discussions of the same topic. Traditional summarization solves only a small part of that problem.
 
-- Python + GitHub Actions workflows
-- SQLite / Turso / libSQL search infrastructure
-- transcript and metadata evidence preservation
+A useful research system also needs to answer questions such as:
+
+- What have I already seen about this topic?
+- Which sources agree or disagree?
+- What specific claims are being made?
+- Which ideas are repeated, and which are genuinely new?
+- Who introduced an idea first?
+- What evidence supports or challenges the claims?
+- What changed over time?
+- Which material deserves deeper AI analysis, and which does not?
+
+The project is designed around those questions rather than around one-off summaries.
+
+## System design
+
+```mermaid
+flowchart TD
+    A[YouTube history / likes / selected sources] --> B[Metadata + transcript capture]
+    B --> C[Preserved source evidence]
+    C --> D[Searchable historical corpus]
+    D --> E[Low-cost classification]
+    E --> F[Selective AI enrichment]
+    F --> G[Claims, perspectives, comparisons]
+    G --> H[Evidence-backed research output]
+
+    I[New relevant videos] --> B
+    J[Human review / control] -. governs .-> E
+    J -. governs .-> F
+    J -. governs .-> H
+```
+
+The architecture separates **source evidence** from **derived analysis**. The evidence should remain stable even as models, prompts, classifications, and conclusions improve.
+
+## What is already working
+
+The historical search foundation has passed a production completion gate. The verified system represented **29,521 catalog videos**, passed validation and quality auditing, executed real search probes, published the complete lexical index to Turso/libSQL, independently verified the remote data, and produced a production evidence artifact.
+
+The project also includes working or verified paths for:
+
+- transcript and metadata capture
+- preservation of canonical evidence
 - resumable long-running processing
-- deterministic validation before AI escalation
-- cost-aware classification and selective enrichment
-- automated Gitleaks, Semgrep, and OSV security checks
-- evidence-first retrieval and human verification
+- deterministic classification before model escalation
+- controlled handling of ambiguous or new-area content
+- security and integrity checks
+- durable project-state and handoff records so work can continue across AI sessions and tools
 
-[Read the full YouTube Second Brain case study →](projects/YOUTUBE_RESEARCH_BRAIN.md)
+## What the next intelligence layer is designed to do
 
----
+The next major layer moves beyond retrieval into **cross-source research intelligence**.
 
-## Supporting build — Endless Thread
+When several creators cover the same subject, the system is intended to compare them at the claim level rather than merely produce separate summaries. The design goal is to identify:
 
-**Endless Thread** is the project-memory and recovery system I am building to keep long-running AI work from losing decisions, evidence, history, open loops, and exact next actions when chats, models, or tools change.
+- specific claims made by each source
+- agreements and disagreements
+- chronology: who discussed an idea first and how later coverage evolved
+- repeated framing versus unique contributions
+- evidence quality and source discipline
+- uncertainty, corrections, and changes over time
+- important factual claims that should be checked against stronger external evidence
+- missing perspectives or important angles not covered by the group
 
-A real recovery test was run against YouTube Second Brain: a fresh AI session successfully reconstructed the project's current state, strongest evidence, stale boundaries, do-not-redo rules, and exact next task without me re-explaining the project history.
+The system should avoid unsupported labels or accusations. Similarity does not automatically mean copying, and "bias" should not be reduced to a simplistic score. The goal is to preserve observable evidence about framing, claims, sources, timing, and differences so a human can make a better judgment.
 
-It demonstrates:
+## Future automation direction
 
-- multi-model / multi-provider workflow design
-- durable state in JSON + Markdown
-- structured handoffs and archive indexing
-- deterministic validation and stale/conflict detection
-- evidence-based completion gates
-- human-in-the-loop decision boundaries
-- context minimization and progressive retrieval
-- AI workflow orchestration
+The planned automation layer expands the Brain in three ways:
 
-[Read the Endless Thread case study →](projects/ENDLESS_THREAD.md)
+1. **Normal save:** liked or selected videos continue into the research archive.
+2. **Send to Brain:** a dedicated manual path marks an individual video as especially important.
+3. **Auto Scouts:** selected creators can be monitored under creator-specific rules so highly relevant new uploads can be captured and analyzed automatically.
 
-## How I approach AI systems
+For important developments, the target behavior is:
 
-My background is not traditional software engineering. It comes from investigations, insurance and regulated operations, finance/property workflows, research, and years of making decisions from incomplete information.
+`new relevant video → capture evidence → classify → quick relevance alert → connect to related prior material → watch for same-topic coverage → produce deeper comparison when the topic develops`
 
-That is why my systems tend to emphasize:
+## Design principles
 
-**problem definition → source evidence → deterministic processing → selective AI → validation → human control**
+**Evidence before interpretation.** Source material is preserved before downstream reasoning.
 
-[Read my building principles →](BUILDING_PRINCIPLES.md)
+**Cheap before expensive.** Deterministic rules and bounded processing run before higher-cost AI analysis.
 
-## Public-safe by design
+**Preserve broadly, think selectively.** Not every transcript needs deep model analysis.
 
-The implementation repositories remain private. This public portfolio exposes non-sensitive architecture, verified milestones, and design choices without publishing credentials, private source data, internal handoffs, or sensitive implementation details.
+**Do not force certainty.** Ambiguous material may remain unresolved instead of being pushed into the wrong category.
 
-## Live portfolio
+**Human control remains part of the system.** AI can organize, compare, retrieve, and surface evidence; important judgments remain reviewable.
 
-https://ryanllmemail2026-debug.github.io/youtube-second-brain/
+**Project state should survive the chat.** Durable files, evidence, and explicit completion gates matter more than any single AI conversation.
+
+## My role
+
+**Project Owner / AI Systems Designer**
+
+I define the problem, research requirements, data structure, processing rules, quality gates, cost controls, failure behavior, and human-review standards. AI coding and reasoning tools are used as implementation partners, while requirements, acceptance criteria, testing decisions, evidence review, and project direction remain explicitly controlled.
+
+The work combines product thinking, research design, AI-assisted workflow development, structured evaluation, and systems-level problem solving rather than treating AI as a black-box summarizer.
+
+## Public / private boundary
+
+This repository is intentionally a **public, high-level project view**.
+
+The implementation repositories remain private. This public layer documents the project problem, design, verified milestones, architecture, operating principles, and development direction without exposing credentials, private source data, internal handoffs, or sensitive implementation details.
+
+## Read more
+
+- [YouTube Second Brain — project case study](projects/YOUTUBE_RESEARCH_BRAIN.md)
+- [Building principles](BUILDING_PRINCIPLES.md)
+- [Endless Thread — supporting project-memory system](projects/ENDLESS_THREAD.md)
