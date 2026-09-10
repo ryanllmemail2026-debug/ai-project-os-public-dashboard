@@ -1,92 +1,173 @@
-# YouTube Second Brain
+# YouTube Second Brain — Project Case Study
 
-**Status:** Working system with a completed historical-search production milestone; Tier 1 classification is the next major build area.
+**Status:** Working system with a completed historical-search production milestone and active development toward automated research intelligence.
 
-## The problem
+## Project purpose
 
-Useful research disappears into watch history, bookmarks, notes, and long transcripts. Reprocessing the same source repeatedly with expensive models is wasteful, and a growing archive becomes useless if it cannot be searched reliably.
+YouTube Second Brain is the YouTube research layer of a broader second-brain system. Its purpose is to turn large volumes of video content into durable, searchable, reusable research evidence rather than disposable summaries.
 
-The goal is simple:
+The project is built around one central idea:
 
-> Capture useful source evidence once, preserve it, make it searchable, and spend expensive AI reasoning only where it adds value.
+> **Capture once. Preserve the source evidence. Reanalyze and improve derived intelligence over time.**
 
-## What I designed and built
+## The problem being solved
 
-The system is an evidence-first research pipeline built around a budget-conscious architecture:
+Video contains valuable information, but that information is difficult to reuse at scale. Important ideas disappear into watch history. The same subjects are covered repeatedly by different creators. Claims may agree, conflict, evolve, or simply repeat each other. Reprocessing long transcripts with expensive models every time a question comes up is inefficient and difficult to audit.
 
-1. capture YouTube metadata and transcript evidence;
-2. preserve source evidence rather than repeatedly re-fetching or re-analyzing it;
-3. maintain a control plane for processing state;
-4. build a searchable historical catalog;
-5. classify cheaply before deeper enrichment;
-6. reserve more expensive AI analysis for selected material.
+The system therefore treats the problem as a research-infrastructure problem rather than a summarization problem.
 
-A simplified architecture:
+It needs to preserve evidence, search history, classify material cheaply, identify what deserves deeper analysis, compare sources, surface contradictions, and keep enough provenance for a human to inspect why an answer was produced.
+
+## Unique value proposition
+
+The value is not just "AI summarizes YouTube."
+
+The intended advantage is the combination of:
+
+- large-scale historical retrieval;
+- preserved source evidence;
+- low-cost deterministic processing before model use;
+- selective AI escalation;
+- cross-creator claim comparison;
+- chronology and originality analysis;
+- evidence-quality review;
+- human-review boundaries for uncertain conclusions;
+- durable project memory so the system can improve over time without starting over.
+
+This turns a personal video archive into an evolving research asset.
+
+## High-level architecture
 
 ```text
-YouTube sources
-    ↓
-metadata + transcript capture
-    ↓
-canonical evidence archive
-    ↓
-historical lexical search
-    ↓
-Turso / libSQL hot search layer
-    ↓
-Tier 1 classification
-    ↓
-selective AI enrichment
-    ↓
-reusable research answers
+YouTube history / likes / selected sources
+                ↓
+        metadata + transcript capture
+                ↓
+        preserved source evidence
+                ↓
+        searchable historical corpus
+                ↓
+        low-cost classification
+                ↓
+        selective AI enrichment
+                ↓
+      claim + perspective analysis
+                ↓
+       evidence-backed research
 ```
 
-## Production milestone
+Source evidence and derived intelligence are deliberately separated. The original evidence should remain reusable even when later models, prompts, classifications, or analytical methods improve.
 
-The historical lexical-search stage passed its production completion gate.
+## Verified production milestone
 
-The verified build represented **29,521 catalog videos**, passed local validation and quality auditing, exercised real lexical search probes, published the complete index to **Turso/libSQL**, independently verified the remote data, and produced a production evidence artifact.
+The historical lexical-search stage passed a production completion gate.
 
-That milestone answered the important product question:
+The verified build represented **29,521 catalog videos**. It passed local validation and quality auditing, executed real lexical search probes, published the complete index to **Turso/libSQL**, independently verified the remote data, and produced a production evidence artifact.
 
-> Can the historical YouTube catalog actually be searched without reprocessing everything?
+That milestone answered a core feasibility question:
+
+> Can a very large personal YouTube research history become reliably searchable without repeatedly reprocessing the original material?
 
 **Yes.**
 
-## Engineering and product choices
+## Design choices
 
-### Evidence before enrichment
-Source evidence is treated as a durable asset. Derived analysis can change as models improve; the original evidence should not have to be recreated.
+### 1. Evidence before enrichment
 
-### Cheap before expensive
-Transcript capture itself is designed to use **zero AI tokens**. Deterministic processing and lower-cost classification come before deeper model analysis.
+Transcript and metadata evidence are preserved before downstream analysis. If a classifier, model, or later enrichment step fails, the underlying source evidence should still exist.
 
-### Resumable processing
-Long-running work is structured so transient runner, bridge, or network failures do not require starting over. The production path includes resumable shard inventory and cache persistence.
+### 2. Cheap before expensive
 
-### Integrity gates
-The workflow includes row-count checks, quality audits, probe searches, remote verification, and evidence artifact creation before a major stage is treated as complete.
+The system uses deterministic processing where possible before escalating to model-based analysis. Deeper reasoning is reserved for material that actually needs it.
 
-### Security baseline
-The private implementation repo uses automated security checks including **Gitleaks**, **Semgrep**, and **Google OSV-Scanner**.
+### 3. Preserve broadly, think selectively
 
-## Tools and concepts
+The archive can remain broad while expensive analysis stays selective. The system does not need to deeply analyze every paragraph of every transcript in advance.
 
-- Python
-- GitHub Actions
-- SQLite / Turso / libSQL
-- YouTube metadata and transcript processing
-- Google Drive as a canonical evidence layer
-- deterministic processing before LLM escalation
-- classification and selective enrichment
-- resumable workflows
-- validation and evidence artifacts
-- automated security scanning
+### 4. Do not force uncertain classifications
 
-## What this project demonstrates
+If material does not confidently fit the existing taxonomy, the system can preserve it as unresolved or a new-area candidate rather than forcing a bad match.
 
-This is not a chatbot wrapper. It is a practical attempt to answer a systems question:
+### 5. Completion requires evidence
 
-**How do you turn a huge, messy body of source material into durable, searchable research infrastructure without letting AI cost or context size explode?**
+Major stages are not treated as complete simply because code ran. Validation, probe searches, integrity checks, remote verification, and evidence artifacts are used as completion gates.
 
-The project is still being developed. The stable historical-search foundation is complete; the next major work is Tier 1 classification and selective enrichment.
+### 6. Durable state matters
+
+The project is designed so another AI session or implementation tool can reconstruct the important project state from durable files instead of relying on one long chat history.
+
+## Cross-creator intelligence direction
+
+A major target capability is automatic comparison of multiple creators discussing the same topic.
+
+The system is intended to analyze more than summary similarity. It should preserve and compare:
+
+- the specific factual or analytical claims made by each creator;
+- what each creator actually demonstrates, tests, or cites;
+- where sources agree and disagree;
+- publication chronology and who introduced a particular angle first;
+- repeated examples or framing;
+- unique perspectives and genuinely new contributions;
+- evidence quality and primary-source discipline;
+- uncertainty, corrections, and changes in claims over time;
+- factual claims that should be checked against stronger external evidence;
+- important viewpoints or evidence missing from the group.
+
+The system should distinguish observable overlap from unsupported accusations. Similarity alone is not proof of copying, and differences in viewpoint should be described through evidence, framing, sources, timing, and claims rather than simplistic labels.
+
+## Automation direction
+
+The planned intake system has three paths.
+
+**Normal save:** liked or selected videos enter the Brain as regular research material.
+
+**Send to Brain:** a dedicated manual signal marks an individual video as especially important.
+
+**Auto Scouts:** selected creators can have creator-specific monitoring rules. Some may have every upload captured; others may be filtered aggressively for relevance before transcription and analysis.
+
+For important new material, the target workflow is:
+
+```text
+new relevant video
+→ preserve evidence
+→ classify
+→ send a quick why-this-matters alert
+→ connect to related historical material
+→ watch for additional same-topic coverage
+→ create or update a deeper cross-creator comparison
+```
+
+The deeper report should update only when new evidence materially changes the comparison rather than producing repetitive summaries.
+
+## Human + AI operating model
+
+This is intentionally a human-in-the-loop system.
+
+AI is used for implementation assistance, classification, retrieval, comparison, structured extraction, and deeper reasoning where appropriate. Human judgment remains responsible for requirements, acceptance criteria, project direction, ambiguous classifications, important factual interpretation, cost/risk decisions, and whether conclusions are strong enough to be treated as reliable.
+
+## What the project demonstrates
+
+The project combines:
+
+- product and systems thinking;
+- research workflow design;
+- large-scale evidence preservation;
+- searchable knowledge infrastructure;
+- AI cost management;
+- deterministic and model-based processing;
+- ambiguity handling;
+- validation and acceptance gates;
+- human-in-the-loop evaluation;
+- durable cross-session project continuity.
+
+It is not intended to be a chatbot wrapper. The broader systems question is:
+
+> **How can a large, messy, constantly growing body of media be converted into durable research infrastructure that preserves evidence, controls AI cost, supports comparison, and becomes more useful over time?**
+
+## Current development direction
+
+The historical search foundation is established. Current development is focused on safely expanding classification and automation, creating higher-priority intake paths, monitoring selected creators, and building the cross-creator claims-and-perspectives layer described above.
+
+## Public boundary
+
+This case study is intentionally high level. Private implementation repositories, credentials, private source data, internal handoffs, and sensitive operational details are not published here.
