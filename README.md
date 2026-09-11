@@ -112,6 +112,20 @@ For important developments, the target behavior is:
 
 **Project state should survive the chat.** Durable files, evidence, and explicit completion gates matter more than any single AI conversation.
 
+## Part of a larger system
+
+YouTube Second Brain is also being developed as one real product inside a broader experimental AI-assisted project operating system.
+
+The long-term direction is to keep durable project state above any single model or conversation, then combine structured project design, staged execution, independent review, evidence gates, and explicit human decision points so work can move forward without depending on one LLM.
+
+At a high level:
+
+- **[Endless Chat OS](https://github.com/RyanMcConihe/endless-chat-os)** preserves project memory, handoffs, recovery state, and evidence across chats and AI providers.
+- **Project Execution Engine** is the developing orchestration layer intended to turn project designs into Worlds, Levels, Checkpoints, reviews, and verified progression while recording non-blocking improvements for later review instead of repeatedly stopping active work.
+- **YouTube Second Brain** is one product being built within that environment and provides a real-world test bed for the larger architecture.
+
+Human decisions remain explicit gates for product design, meaningful cost choices, privacy/publication boundaries, and material tradeoffs. The broader architecture is still evolving, so future capabilities are intentionally described as direction rather than as finished functionality.
+
 ## My role
 
 **Project Owner / AI Systems Designer**
