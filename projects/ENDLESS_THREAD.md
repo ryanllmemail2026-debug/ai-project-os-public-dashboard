@@ -1,6 +1,6 @@
 # Endless Chat OS
 
-**Status:** Active development. Fresh-session recovery has been proven on a real project; reducing manual relay between AI sessions is the current frontier.
+**Status:** Active development. Fresh-session recovery has been proven on a real project, deterministic project-health checks are in place, and the current frontier is structured auto-save and fresh-session recovery from saved project state.
 
 ## The problem
 
@@ -87,18 +87,15 @@ That is the core proof behind Endless Chat OS: **a real project can survive a fr
 
 ## Current build
 
-The current work is moving from recovery toward **zero-relay automation**.
+The project is now in **World 7 — Never Lose the Work**.
 
-A deterministic, read-only continuity health checker has been implemented to inspect project files and report:
+The current question is no longer only whether a fresh AI can recover a project. It is whether the project can create a structured save package automatically enough that the human owner does not have to decide what must be carried forward every time work advances.
 
-- whether the minimum memory package exists;
-- whether the retrieval manifest is valid;
-- whether current-state files agree;
-- whether proof is present;
-- what the next action is;
-- whether human input is actually required.
+A first selected-project auto-save pilot has produced a structured save event containing the project handoff, current state, open loops, retrieval manifest, archive/index updates, and save-state record. Deterministic static evaluation reports that pilot as healthy, internally consistent, fresh-chat ready, relay-ready, and not requiring owner intervention.
 
-The checker is deliberately read-only first. Automated fixes and broader relay reduction come only after the validation layer is proven.
+The next proof is a genuinely fresh-session recovery starting only from the retrieval manifest and that save event.
+
+There is one important verification caveat: the latest GitHub-hosted CI attempt did not execute because a runner was not allocated. The project therefore does **not** claim that CI independently verified the current World 7 pilot. Static verification and executed CI proof are treated as different things.
 
 ## What it demonstrates
 
@@ -110,6 +107,7 @@ The checker is deliberately read-only first. Automated fixes and broader relay r
 - stale/conflict detection
 - evidence and proof tracking
 - context minimization and progressive retrieval
+- structured save events
 - human-in-the-loop controls
 - workflow orchestration
 - designing AI systems for restart and recovery
@@ -124,6 +122,6 @@ My answer is to separate temporary conversational working memory from durable pr
 
 ## Current boundary
 
-Endless Chat OS has proven fresh-session recovery on a real project. Full automatic capture of every meaningful chat, broad cross-provider routing, and zero-human-relay operation across many projects are still future stages and are not presented as completed.
+Endless Chat OS has proven fresh-session recovery on a real project and has moved into a structured auto-save pilot. Full automatic capture of every meaningful chat, broad cross-provider routing, and zero-human-relay operation across many projects are still future stages and are not presented as completed.
 
 The implementation repository remains private. This case study exposes only non-sensitive architecture, verified milestones, and design concepts.
