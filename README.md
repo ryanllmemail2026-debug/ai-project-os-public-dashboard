@@ -130,4 +130,4 @@ The implementation repositories remain private. This public layer documents the 
 
 - [YouTube Second Brain — project case study](projects/YOUTUBE_RESEARCH_BRAIN.md)
 - [Building principles](BUILDING_PRINCIPLES.md)
-- [Endless Thread — supporting project-memory system](projects/ENDLESS_THREAD.md)
+- [Endless Chat OS — supporting project-memory system](projects/ENDLESS_THREAD.md)
