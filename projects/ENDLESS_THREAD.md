@@ -1,4 +1,4 @@
-# Endless Thread
+# Endless Chat OS
 
 **Status:** Active development. Fresh-session recovery has been proven on a real project; reducing manual relay between AI sessions is the current frontier.
 
@@ -20,7 +20,7 @@ The human owner then becomes the memory system and the relay between models.
 
 ## What I am building
 
-**Endless Thread** is a provider-neutral project-memory and recovery system for long-running AI-assisted work.
+**Endless Chat OS** is a provider-neutral project-memory and recovery system for long-running AI-assisted work.
 
 The goal is not to keep one giant chat alive forever. The goal is to let individual chats stay small and focused while the project keeps durable memory outside the conversation.
 
@@ -68,7 +68,7 @@ The project is designed so ChatGPT, Claude, Codex, or another model can enter th
 
 ## Proven milestone
 
-The Endless Thread pattern was rolled into a separate real project: **YouTube Second Brain**.
+The Endless Chat OS pattern was rolled into a separate real project: **YouTube Second Brain**.
 
 A fresh AI session was instructed to start only from the project's retrieval manifest and recover the current state without relying on prior chat memory or asking the owner to re-explain the project.
 
@@ -83,7 +83,7 @@ The recovery test **passed**. The fresh session correctly reconstructed:
 - what should not be redone;
 - the exact next technical task.
 
-That is the core proof behind Endless Thread: **a real project can survive a fresh chat without forcing the human owner to rebuild the context manually.**
+That is the core proof behind Endless Chat OS: **a real project can survive a fresh chat without forcing the human owner to rebuild the context manually.**
 
 ## Current build
 
@@ -116,7 +116,7 @@ The checker is deliberately read-only first. Automated fixes and broader relay r
 
 ## Why it matters
 
-The question behind Endless Thread is simple:
+The question behind Endless Chat OS is simple:
 
 > **How do you get the speed of conversational AI without making the conversation itself the database, project manager, memory system, and source of truth?**
 
@@ -124,6 +124,6 @@ My answer is to separate temporary conversational working memory from durable pr
 
 ## Current boundary
 
-Endless Thread has proven fresh-session recovery on a real project. Full automatic capture of every meaningful chat, broad cross-provider routing, and zero-human-relay operation across many projects are still future stages and are not presented as completed.
+Endless Chat OS has proven fresh-session recovery on a real project. Full automatic capture of every meaningful chat, broad cross-provider routing, and zero-human-relay operation across many projects are still future stages and are not presented as completed.
 
 The implementation repository remains private. This case study exposes only non-sensitive architecture, verified milestones, and design concepts.
